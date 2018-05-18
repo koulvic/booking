@@ -109,7 +109,7 @@ public class Selenium2Example {
                         "ldn't find available slot");
             }
 
-            while(LocalTime.now().isBefore(LocalTime.parse("22:00:00"))) {
+            while(LocalTime.now().isBefore(LocalTime.parse("22:00:01"))) {
                 log.info("Waiting for 10 ms");
                 Thread.sleep(10);
             }
