@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -114,10 +115,10 @@ public class Selenium2Example {
                 Thread.sleep(10);
             }
 
+            //move to element before clicking
+            Actions actions = new Actions(driver);
+            actions.moveToElement(availableSlot).click().perform();
 
-            //TODO
-            //https://stackoverflow.com/questions/11908249/debugging-element-is-not-clickable-at-point-error?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-            availableSlot.click();
             (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.id("addToBasketBtn")).isDisplayed());
             driver.findElement(By.id("addToBasketBtn")).click();
 
