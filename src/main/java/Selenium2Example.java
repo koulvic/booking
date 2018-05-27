@@ -20,6 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Selenium2Example {
+
+    public static final int TIME_OUT_IN_SECONDS = 30;
+
     public static void main(String[] args) throws AWTException, IOException {
         Logger log = LogManager.getLogger();
         log.info("Starting Booking App");
@@ -62,27 +65,27 @@ public class Selenium2Example {
             System.out.println("Page title is: " + driver.getTitle());
 
             // Wait for the page to load, timeout after 10 seconds
-            (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> {
+            (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> {
                 //return d.getTitle().toLowerCase().startsWith("cheese!");
                 return d.findElement(By.id("cscNavBookings")).isDisplayed();
             });
 
             driver.findElement(By.id("cscNavBookings")).click();
 
-            (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Make a Booking")).isDisplayed());
+            (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Make a Booking")).isDisplayed());
             driver.findElement(By.partialLinkText("Make a Booking")).click();
 
-            (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Queensmead")).isDisplayed());
+            (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Queensmead")).isDisplayed());
             driver.findElement(By.partialLinkText("Queensmead")).click();
 
-            (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Court and Pitch Booking")).isDisplayed());
+            (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Court and Pitch Booking")).isDisplayed());
             driver.findElement(By.partialLinkText("Court and Pitch Booking")).click();
 
-            (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Badminton Court - 60mins")).isDisplayed());
+            (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Badminton Court - 60mins")).isDisplayed());
             driver.findElement(By.partialLinkText("Badminton Court - 60mins")).click();
 
 
-            (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.id("activityTimetableList")).isDisplayed());
+            (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.id("activityTimetableList")).isDisplayed());
 
 
             WebElement availableSlot = null;
@@ -119,18 +122,18 @@ public class Selenium2Example {
             Actions actions = new Actions(driver);
             actions.moveToElement(availableSlot).click().perform();
 
-            (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.id("addToBasketBtn")).isDisplayed());
+            (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.id("addToBasketBtn")).isDisplayed());
             driver.findElement(By.id("addToBasketBtn")).click();
 
 
-            (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Pay by credit/debit card")).isDisplayed());
+            (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Pay by credit/debit card")).isDisplayed());
 
-            WebDriverWait wait2 = new WebDriverWait(driver, 10);
+            WebDriverWait wait2 = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
             wait2.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Use voucher")));
 
             driver.findElement(By.partialLinkText("Use voucher")).findElements(By.tagName("span")).get(1).click();
 
-            (new WebDriverWait(driver, 10)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Confirm booking")).isDisplayed());
+            (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Confirm booking")).isDisplayed());
             driver.findElement(By.partialLinkText("Confirm booking")).click();
 
 
