@@ -101,7 +101,7 @@ public class Selenium2Example {
                 String bookingTime = BookingSchedule.getTime(LocalDateTime.now().getDayOfWeek());
 
                 for (int j = 0; attempCount < webElements.length; j++) {
-                    WebElement webElement = ((WebElement) webElements[j]);
+                    WebElement webElement = ((WebElement) webElements[webElements.length -1 -j]);
 
                     try {
 
