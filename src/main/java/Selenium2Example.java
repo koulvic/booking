@@ -143,7 +143,7 @@ public class Selenium2Example {
 
 
                 bookedSucessFully = true;
-                System.out.println("Page title is: " + driver.getTitle());
+                log.info("Successfully booked slot for {}", bookingTime);
             }catch (CouldNotFindAvailableSlotException ex){
                 bookedSucessFully = true;
                 log.error("couldn't find available slot", ex);
