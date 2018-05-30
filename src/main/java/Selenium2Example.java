@@ -21,6 +21,7 @@ import java.util.Map;
 public class Selenium2Example {
 
     static final int TIME_OUT_IN_SECONDS = 30;
+    static final int TIME_OUT_POST_FINDING_AVAILABLE_SLOT_IN_SECONDS = 120;
     static final int NUMBER_RETRY_ATTEMPTS = 3;
 
 
@@ -127,11 +128,11 @@ public class Selenium2Example {
 
                 availableSlot.click();
 
-                (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.id("addToBasketBtn")).isDisplayed());
+                (new WebDriverWait(driver, TIME_OUT_POST_FINDING_AVAILABLE_SLOT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.id("addToBasketBtn")).isDisplayed());
                 driver.findElement(By.id("addToBasketBtn")).click();
 
 
-                (new WebDriverWait(driver, TIME_OUT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Pay by credit/debit card")).isDisplayed());
+                (new WebDriverWait(driver, TIME_OUT_POST_FINDING_AVAILABLE_SLOT_IN_SECONDS)).until((ExpectedCondition<Boolean>) d -> d.findElement(By.partialLinkText("Pay by credit/debit card")).isDisplayed());
 
                 WebDriverWait wait2 = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
                 wait2.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Use voucher")));
